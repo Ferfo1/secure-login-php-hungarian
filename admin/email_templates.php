@@ -48,24 +48,24 @@ if (file_exists('../resetpass-email-template.html')) {
 // Handle success messages
 if (isset($_GET['success_msg'])) {
     if ($_GET['success_msg'] == 1) {
-        $success_msg = 'Email template updated successfully!';
+        $success_msg = 'Az email sablon sikeresen frissítve!';
     }
 }
 // Handle error messages
 if (isset($_GET['error_msg'])) {
     if ($_GET['error_msg'] == 1) {
-        $error_msg = 'There was an error updating the email template! Please set the correct permissions!';
+        $error_msg = 'Hiba történt az email sablon frissítésekor! Kérjük, állítsd be a megfelelő jogosultságokat!';
     }
 }
 ?>
-<?=template_admin_header('Email Templates', 'email_templates')?>
+<?=template_admin_header('Email sablonok', 'email_templates')?>
 
 <form method="post" enctype="multipart/form-data">
 
     <div class="content-title responsive-flex-wrap responsive-pad-bot-3">
-        <h2>Email Templates</h2>
+        <h2>Email sablonok</h2>
         <div class="btns">
-            <input type="submit" name="submit" value="Save" class="btn">
+            <input type="submit" name="submit" value="Mentés" class="btn">
         </div>
     </div>
 
@@ -91,16 +91,16 @@ if (isset($_GET['error_msg'])) {
 
     <div class="tabs">
         <?php if (isset($activation_email_template)): ?>
-        <a href="#" class="active">Activation</a>
+        <a href="#" class="active">Aktiválás</a>
         <?php endif; ?>
         <?php if (isset($notification_email_template)): ?>
-        <a href="#">Notification</a>
+        <a href="#">Értesítés</a>
         <?php endif; ?>
         <?php if (isset($twofactor_email_template)): ?>
-        <a href="#">Two-Factor</a>
+        <a href="#">Kétlépcsős</a>
         <?php endif; ?>
         <?php if (isset($resetpass_email_template)): ?>
-        <a href="#">Reset Password</a>
+        <a href="#">Jelszó visszaállítás</a>
         <?php endif; ?>
     </div>
 

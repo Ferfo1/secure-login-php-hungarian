@@ -8,7 +8,7 @@ $contents = file_get_contents($file);
 function format_key($key) {
     $key = str_replace(
         ['_', 'url', 'db ', ' pass', ' user', ' id', ' uri', 'smtp', 'paypal', 'ipn', 'pdf', 'ajax'], 
-        [' ', 'URL', 'Database ', ' Password', ' Username', ' ID', ' URI', 'SMTP', 'PayPal', 'IPN', 'PDF', 'AJAX'], 
+        [' ', 'URL', 'Adatbáis ', ' Jelszó', ' Felhasználónév', ' ID', ' URI', 'SMTP', 'PayPal', 'IPN', 'PDF', 'AJAX'], 
         strtolower($key)
     );
     return ucwords($key);
@@ -104,24 +104,24 @@ if (!empty($_POST)) {
 // Handle success messages
 if (isset($_GET['success_msg'])) {
     if ($_GET['success_msg'] == 1) {
-        $success_msg = 'Settings updated successfully!';
+        $success_msg = 'A beállítások sikeresen frissítve!';
     }
 }
 // Handle error messages
 if (isset($_GET['error_msg'])) {
     if ($_GET['error_msg'] == 1) {
-        $error_msg = 'There was an error updating the settings! Please make sure the config.php file is writable!';
+        $error_msg = 'Hiba történt a beállítások frissítésekor! Kérjük, ellenőrizze, hogy a config.php fájl írható-e!';
     }
 }
 ?>
-<?=template_admin_header('Settings', 'settings')?>
+<?=template_admin_header('Beállítások', 'settings')?>
 
 <form method="post">
 
     <div class="content-title">
-        <h2>Settings</h2>
+        <h2>Beállítások</h2>
         <div class="btns">
-            <input type="submit" name="submit" value="Save" class="btn">
+            <input type="submit" name="submit" value="Mentés" class="btn">
         </div>
     </div>
 

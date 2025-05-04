@@ -30,7 +30,7 @@ if (isset($_GET['id'])) {
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
-            $error_msg = 'Username already exists!';
+            $error_msg = 'A felhasználónév már létezik!';
         }
         // Check to see if email already exists
         $stmt = $con->prepare('SELECT id FROM accounts WHERE email = ? AND email != ?');
@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
-            $error_msg = 'Email already exists!';
+            $error_msg = 'Az email cím már használatban van!';
         }
         // Update the account
         if (!isset($error_msg)) {
@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
-            $error_msg = 'Username already exists!';
+            $error_msg = 'A felhasználónév már létezik!';
         }
         // Check to see if email already exists
         $stmt = $con->prepare('SELECT id FROM accounts WHERE email = ?');
@@ -87,7 +87,7 @@ if (isset($_GET['id'])) {
         $stmt->execute();
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
-            $error_msg = 'Email already exists!';
+            $error_msg = 'Az email cím már használatban van!';
         }
         // Insert new account into the database
         if (!isset($error_msg)) {
@@ -115,16 +115,16 @@ if (isset($_GET['id'])) {
     }
 }
 ?>
-<?=template_admin_header($page . ' Account', 'accounts', 'manage')?>
+<?=template_admin_header($page . ' Fiók', 'accounts', 'manage')?>
 
 <form method="post" enctype="multipart/form-data">
 
     <div class="content-title responsive-flex-wrap responsive-pad-bot-3">
-        <h2><?=$page?> Account</h2>
+        <h2><?=$page?> Fiók</h2>
         <div class="btns">
-            <a href="accounts.php" class="btn alt mar-right-1">Cancel</a>
+            <a href="accounts.php" class="btn alt mar-right-1">Mégse</a>
             <?php if ($page == 'Edit'): ?>
-            <input type="submit" name="delete" value="Delete" class="btn red mar-right-1" onclick="return confirm('Are you sure you want to delete this account?')">
+            <input type="submit" name="delete" value="Delete" class="btn red mar-right-1" onclick="return confirm('Biztos hogy törölni szeretnéd a fiókot?')">
             <?php endif; ?>
             <input type="submit" name="submit" value="Save" class="btn">
         </div>
@@ -144,18 +144,18 @@ if (isset($_GET['id'])) {
 
         <div class="form responsive-width-100">
 
-            <label for="username"><span class="required">*</span> Username</label>
-            <input type="text" id="username" name="username" placeholder="Username" value="<?=$account['username']?>" required>
+            <label for="username"><span class="required">*</span> Felhasználónév</label>
+            <input type="text" id="username" name="username" placeholder="Felhasználónév" value="<?=$account['username']?>" required>
 
-            <label for="password"><?=$page == 'Edit' ? 'New ' : '<span class="required">*</span> '?>Password</label>
-            <input type="password" id="password" name="password" placeholder="<?=$page == 'Edit' ? 'New ' : ''?>Password" autocomplete="new-password" value=""<?=$page == 'Edit' ? '' : ' required'?>>
+            <label for="password"><?=$page == 'Edit' ? 'New ' : '<span class="required">*</span> '?>Jelszó</label>
+            <input type="password" id="password" name="password" placeholder="<?=$page == 'Edit' ? 'New ' : ''?>Jelszó" autocomplete="new-password" value=""<?=$page == 'Edit' ? '' : ' required'?>>
 
             <label for="email"><span class="required">*</span> Email</label>
             <input type="text" id="email" name="email" placeholder="Email" value="<?=$account['email']?>" required>
 
             <div class="group">
                 <div class="item">
-                    <label for="role">Role</label>
+                    <label for="role">Szerepkör</label>
                     <select id="role" name="role">
                         <?php foreach ($roles_list as $role): ?>
                         <option value="<?=$role?>"<?=$role==$account['role']?' selected':''?>><?=$role?></option>
@@ -163,21 +163,21 @@ if (isset($_GET['id'])) {
                     </select>
                 </div>
                 <div class="item">
-                    <label for="activation_status">Status</label>
+                    <label for="activation_status">Státusz</label>
                     <select id="activation_status" name="activation_status">
-                        <option value="activated"<?=$account['activation_code']=='activated'?' selected':''?>>Activated</option>
-                        <option value="deactivated"<?=$account['activation_code']=='deactivated'?' selected':''?>>Deactivated</option>
-                        <option value="pending"<?=$account['activation_code']!='activated'&&$account['activation_code']!='deactivated'?' selected':''?>>Pending</option>
+                        <option value="activated"<?=$account['activation_code']=='activated'?' selected':''?>>Aktiválva</option>
+                        <option value="deactivated"<?=$account['activation_code']=='deactivated'?' selected':''?>>Felfüggesztve</option>
+                        <option value="pending"<?=$account['activation_code']!='activated'&&$account['activation_code']!='deactivated'?' selected':''?>>Várakozik</option>
                     </select>
                 </div>
             </div>
 
             <div class="activation_code" style="display:<?=$account['activation_code']=='activated'||$account['activation_code']=='deactivated'?' none':' block'?>">
-                <label for="activation_code">Activation Code</label>
-                <input type="text" id="activation_code" name="activation_code" placeholder="Activation Code" value="<?=$account['activation_code']?>" required>
+                <label for="activation_code">Aktivációs kód</label>
+                <input type="text" id="activation_code" name="activation_code" placeholder="Aktivációs kód" value="<?=$account['activation_code']?>" required>
             </div>
 
-            <label for="approved">Approved</label>
+            <label for="approved">Engedélyezve</label>
             <label for="approved" class="switch">
                 <input type="checkbox" id="approved" name="approved" class="switch" value="1"<?=$account['approved'] ? ' checked' : ''?>>
                 <span class="slider round"></span>
@@ -185,11 +185,11 @@ if (isset($_GET['id'])) {
 
             <div class="group mar-top-1">
                 <div class="item">
-                    <label for="registered">Registered Date</label>
+                    <label for="registered">Regisztáió Dátuma</label>
                     <input id="registered" type="datetime-local" name="registered" value="<?=date('Y-m-d\TH:i', strtotime($account['registered']))?>" required>
                 </div>
                 <div class="item">
-                    <label for="last_seen">Last Seen Date</label>
+                    <label for="last_seen">Elérhető volt</label>
                     <input id="last_seen" type="datetime-local" name="last_seen" value="<?=date('Y-m-d\TH:i', strtotime($account['last_seen']))?>" required>
                 </div>
             </div>

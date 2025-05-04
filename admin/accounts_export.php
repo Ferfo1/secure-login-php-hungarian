@@ -86,14 +86,14 @@ if (isset($_POST['file_type'])) {
     }
 }
 ?>
-<?=template_admin_header('Export Accounts', 'accounts', 'export')?>
+<?=template_admin_header('Fiókok exportálása', 'accounts', 'export')?>
 
 <form method="post">
 
     <div class="content-title responsive-flex-wrap responsive-pad-bot-3">
-        <h2>Export Accounts</h2>
+        <h2>Fiókok exportálása</h2>
         <div class="btns">
-            <a href="accounts.php" class="btn alt mar-right-1">Cancel</a>
+            <a href="accounts.php" class="btn alt mar-right-1">Mégse</a>
             <input type="submit" name="submit" value="Export" class="btn">
         </div>
     </div>
@@ -102,7 +102,7 @@ if (isset($_POST['file_type'])) {
 
         <div class="form responsive-width-100">
 
-            <label for="file_type"><i class="required">*</i> File Type</label>
+            <label for="file_type"><i class="required">*</i> Fájl típusa</label>
             <select id="file_type" name="file_type" required>
                 <option value="csv">CSV</option>
                 <option value="txt">TXT</option>

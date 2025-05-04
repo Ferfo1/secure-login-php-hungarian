@@ -131,22 +131,22 @@ if (isset($_GET['approve'])) {
 // Handle success messages
 if (isset($_GET['success_msg'])) {
     if ($_GET['success_msg'] == 1) {
-        $success_msg = 'Account created successfully!';
+        $success_msg = 'Fiók sikeresen létrehozva!';
     }
     if ($_GET['success_msg'] == 2) {
-        $success_msg = 'Account updated successfully!';
+        $success_msg = 'Fiók sikeresen frissítve!';
     }
     if ($_GET['success_msg'] == 3) {
-        $success_msg = 'Account deleted successfully!';
+        $success_msg = 'Fiók sikeresen törölve!';
     }
     if ($_GET['success_msg'] == 4) {
-        $success_msg = 'Accounts imported successfully! ' . $_GET['imported'] . ' accounts were imported.';
+        $success_msg = 'Fiókok sikeresen importálva! ' . $_GET['imported'] . ' fiók lett importálva.';
     }
 }
 // Create URL
 $url = 'accounts.php?search_query=' . $search . '&status=' . $status . '&role=' . $role . '&last_seen=' . $last_seen;
 ?>
-<?=template_admin_header('Accounts', 'accounts', 'view')?>
+<?=template_admin_header('Fiókok', 'accounts', 'view')?>
 
 <div class="content-title">
     <div class="title">
@@ -154,8 +154,8 @@ $url = 'accounts.php?search_query=' . $search . '&status=' . $status . '&role=' 
             <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z"/></svg>
         </div>
         <div class="txt">
-            <h2>Accounts</h2>
-            <p>View, edit, and create accounts.</p>
+            <h2>Fiókok</h2>
+            <p>Fiókok megtekintése, szerkesztése és létrehozása.</p>
         </div>
     </div>
 </div>
@@ -171,46 +171,46 @@ $url = 'accounts.php?search_query=' . $search . '&status=' . $status . '&role=' 
 <div class="content-header responsive-flex-column pad-top-5">
     <a href="account.php" class="btn">
         <svg class="icon-left" width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-        Create Account
+        Fiók létrehozása
     </a>
     <form method="get">
         <div class="filters">
             <a href="#">
                 <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 416c0 17.7 14.3 32 32 32l54.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 448c17.7 0 32-14.3 32-32s-14.3-32-32-32l-246.7 0c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48L32 384c-17.7 0-32 14.3-32 32zm128 0a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM320 256a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zm32-80c-32.8 0-61 19.7-73.3 48L32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l246.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48l54.7 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-54.7 0c-12.3-28.3-40.5-48-73.3-48zM192 128a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm73.3-64C253 35.7 224.8 16 192 16s-61 19.7-73.3 48L32 64C14.3 64 0 78.3 0 96s14.3 32 32 32l86.7 0c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48L480 128c17.7 0 32-14.3 32-32s-14.3-32-32-32L265.3 64z"/></svg>
-                Filters
+                Szűrők
             </a>
             <div class="list">
-                <label for="role">Role</label>
+                <label for="role">Szerepkör</label>
                 <select name="role" id="role">
-                    <option value=""<?=$role==''?' selected':''?>>All</option>
+                    <option value=""<?=$role==''?' selected':''?>>Összes</option>
                     <option value="Admin"<?=$role=='Admin'?' selected':''?>>Admin</option>
-                    <option value="Member"<?=$role=='Member'?' selected':''?>>Member</option>
+                    <option value="Member"<?=$role=='Member'?' selected':''?>>Tag</option>
                 </select>
-                <label for="last_seen">Last Seen</label>
+                <label for="last_seen">Utoljára aktív</label>
                 <select name="last_seen" id="last_seen">
-                    <option value=""<?=$last_seen==''?' selected':''?>>All</option>
-                    <option value="today"<?=$last_seen=='today'?' selected':''?>>Today</option>
-                    <option value="yesterday"<?=$last_seen=='yesterday'?' selected':''?>>Yesterday</option>
-                    <option value="week"<?=$last_seen=='week'?' selected':''?>>This Week</option>
-                    <option value="month"<?=$last_seen=='month'?' selected':''?>>This Month</option>
-                    <option value="year"<?=$last_seen=='year'?' selected':''?>>This Year</option>
-                    <option value="inactive"<?=$last_seen=='inactive'?' selected':''?>>Inactive</option>
+                    <option value=""<?=$last_seen==''?' selected':''?>>Összes</option>
+                    <option value="today"<?=$last_seen=='today'?' selected':''?>>Ma</option>
+                    <option value="yesterday"<?=$last_seen=='yesterday'?' selected':''?>>Tegnap</option>
+                    <option value="week"<?=$last_seen=='week'?' selected':''?>>Ezen a héten</option>
+                    <option value="month"<?=$last_seen=='month'?' selected':''?>>Ebben a hónapban</option>
+                    <option value="year"<?=$last_seen=='year'?' selected':''?>>Idén</option>
+                    <option value="inactive"<?=$last_seen=='inactive'?' selected':''?>>Inaktív</option>
                 </select>
-                <label for="status">Status</label>
+                <label for="status">Állapot</label>
                 <select name="status" id="status">
-                    <option value=""<?=$status==''?' selected':''?>>All</option>
-                    <option value="Activated"<?=$status=='Activated'?' selected':''?>>Activated</option>
-                    <option value="Deactivated"<?=$status=='Deactivated'?' selected':''?>>Deactivated</option>
-                    <option value="Pending Activation"<?=$status=='Pending Activation'?' selected':''?>>Pending Activation</option>
-                    <option value="Approved"<?=$status=='Approved'?' selected':''?>>Approved</option>
-                    <option value="Pending Approval"<?=$status=='Pending Approval'?' selected':''?>>Pending Approval</option>
+                    <option value=""<?=$status==''?' selected':''?>>Összes</option>
+                    <option value="Activated"<?=$status=='Activated'?' selected':''?>>Aktivált</option>
+                    <option value="Deactivated"<?=$status=='Deactivated'?' selected':''?>>Deaktivált</option>
+                    <option value="Pending Activation"<?=$status=='Pending Activation'?' selected':''?>>Aktiválásra vár</option>
+                    <option value="Approved"<?=$status=='Approved'?' selected':''?>>Jóváhagyott</option>
+                    <option value="Pending Approval"<?=$status=='Pending Approval'?' selected':''?>>Jóváhagyásra vár</option>
                 </select>
-                <button type="submit">Apply</button>
+                <button type="submit">Alkalmaz</button>
             </div>
         </div>
         <div class="search">
             <label for="search_query">
-                <input id="search_query" type="text" name="search_query" placeholder="Search account..." value="<?=htmlspecialchars($search, ENT_QUOTES)?>" class="responsive-width-100">
+                <input id="search_query" type="text" name="search_query" placeholder="Fiók keresése..." value="<?=htmlspecialchars($search, ENT_QUOTES)?>" class="responsive-width-100">
                 <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
             </label>
         </div>
@@ -221,25 +221,46 @@ $url = 'accounts.php?search_query=' . $search . '&status=' . $status . '&role=' 
     <?php if ($role != ''): ?>
     <div class="filter">
         <a href="<?=remove_url_param($url, 'role')?>"><svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></a>
-        Role : <?=htmlspecialchars($role, ENT_QUOTES)?>
+        Szerepkör : <?=htmlspecialchars($role == 'Member' ? 'Tag' : $role, ENT_QUOTES)?>
     </div>
     <?php endif; ?>
     <?php if ($last_seen != ''): ?>
     <div class="filter">
         <a href="<?=remove_url_param($url, 'last_seen')?>"><svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free --><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></a>
-        Last Seen : <?=htmlspecialchars($last_seen, ENT_QUOTES)?>
+        Utoljára aktív : 
+        <?php
+        switch ($last_seen) {
+            case 'today': echo 'Ma'; break;
+            case 'yesterday': echo 'Tegnap'; break;
+            case 'week': echo 'Ezen a héten'; break;
+            case 'month': echo 'Ebben a hónapban'; break;
+            case 'year': echo 'Idén'; break;
+            case 'inactive': echo 'Inaktív'; break;
+            default: echo htmlspecialchars($last_seen, ENT_QUOTES);
+        }
+        ?>
     </div>
     <?php endif; ?>
     <?php if ($status != ''): ?>
     <div class="filter">
         <a href="<?=remove_url_param($url, 'status')?>"><svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free --><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></a>
-        Status : <?=htmlspecialchars($status, ENT_QUOTES)?>
+        Állapot : 
+        <?php
+        switch ($status) {
+            case 'Activated': echo 'Aktivált'; break;
+            case 'Deactivated': echo 'Deaktivált'; break;
+            case 'Pending Activation': echo 'Aktiválásra vár'; break;
+            case 'Approved': echo 'Jóváhagyott'; break;
+            case 'Pending Approval': echo 'Jóváhagyásra vár'; break;
+            default: echo htmlspecialchars($status, ENT_QUOTES);
+        }
+        ?>
     </div>
     <?php endif; ?>
     <?php if ($search != ''): ?>
     <div class="filter">
         <a href="<?=remove_url_param($url, 'search_query')?>"><svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free --><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg></a>
-        Search : <?=htmlspecialchars($search, ENT_QUOTES)?>
+        Keresés : <?=htmlspecialchars($search, ENT_QUOTES)?>
     </div>
     <?php endif; ?>   
 </div>
@@ -250,18 +271,19 @@ $url = 'accounts.php?search_query=' . $search . '&status=' . $status . '&role=' 
             <thead>
                 <tr>
                     <td><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=id'?>">#<?=$order_by=='id' ? $table_icons[strtolower($order)] : ''?></a></td>
-                    <td colspan="2"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=username'?>">Username<?=$order_by=='username' ? $table_icons[strtolower($order)] : ''?></a></td>
-                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=email'?>">Email<?=$order_by=='email' ? $table_icons[strtolower($order)] : ''?></td>
-                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=activation_code'?>">Status<?=$order_by=='activation_code' ? $table_icons[strtolower($order)] : ''?></td>
-                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=role'?>">Role<?=$order_by=='role' ? $table_icons[strtolower($order)] : ''?></td>
-                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=last_seen'?>">Last Seen<?=$order_by=='last_seen' ? $table_icons[strtolower($order)] : ''?></a></td>
-                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=registered'?>">Registered Date<?=$order_by=='registered' ? $table_icons[strtolower($order)] : ''?></a></td>                    <td class="align-center">Action</td>
+                    <td colspan="2"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=username'?>">Felhasználónév<?=$order_by=='username' ? $table_icons[strtolower($order)] : ''?></a></td>
+                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=email'?>">E-mail<?=$order_by=='email' ? $table_icons[strtolower($order)] : ''?></td>
+                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=activation_code'?>">Állapot<?=$order_by=='activation_code' ? $table_icons[strtolower($order)] : ''?></td>
+                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=role'?>">Szerepkör<?=$order_by=='role' ? $table_icons[strtolower($order)] : ''?></td>
+                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=last_seen'?>">Utoljára aktív<?=$order_by=='last_seen' ? $table_icons[strtolower($order)] : ''?></a></td>
+                    <td class="responsive-hidden"><a href="<?=$url . '&order=' . ($order=='ASC'?'DESC':'ASC') . '&order_by=registered'?>">Regisztráció dátuma<?=$order_by=='registered' ? $table_icons[strtolower($order)] : ''?></a></td>
+                    <td class="align-center">Művelet</td>
                 </tr>
             </thead>
             <tbody>
                 <?php if (!$accounts): ?>
                 <tr>
-                    <td colspan="20" class="no-results">There are no accounts.</td>
+                    <td colspan="20" class="no-results">Nincsenek fiókok.</td>
                 </tr>
                 <?php endif; ?>
                 <?php foreach ($accounts as $account): ?>
@@ -279,20 +301,20 @@ $url = 'accounts.php?search_query=' . $search . '&status=' . $status . '&role=' 
                     <td class="responsive-hidden"><?=htmlspecialchars($account['email'], ENT_QUOTES)?></td>
                     <td class="responsive-hidden">
                         <?php if (!$account['approved']): ?>
-                        <span class="orange small">Pending Approval</span>
+                        <span class="orange small">Jóváhagyásra vár</span>
                         <?php elseif ($account['activation_code'] == 'activated'): ?>
-                        <span class="green small">Activated</span>
+                        <span class="green small">Aktivált</span>
                         <?php elseif ($account['activation_code'] == 'deactivated'): ?>
-                        <span class="red small">Deactivated</span>
+                        <span class="red small">Deaktivált</span>
                         <?php else: ?>
-                        <span class="grey small" title="<?=$account['activation_code']?>">Pending Activation</span>
+                        <span class="grey small" title="<?=$account['activation_code']?>">Aktiválásra vár</span>
                         <?php endif; ?>
                     </td>
                     <td class="responsive-hidden">
                         <?php if ($account['role'] == 'Admin'): ?>
-                        <span class="red small"><?=$account['role']?></span>
+                        <span class="red small">Admin</span>
                         <?php elseif ($account['role'] == 'Member'): ?>
-                        <span class="blue small"><?=$account['role']?></span>
+                        <span class="blue small">Tag</span>
                         <?php else: ?>
                         <span class="grey small"><?=$account['role']?></span>
                         <?php endif; ?>
@@ -307,37 +329,37 @@ $url = 'accounts.php?search_query=' . $search . '&status=' . $status . '&role=' 
                                     <span class="icon">
                                         <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>
                                     </span>
-                                    Edit
+                                    Szerkesztés
                                 </a>
                                 <?php if (!$account['approved']): ?>
-                                <a class="green" href="accounts.php?approve=<?=$account['id']?>" onclick="return confirm('Are you sure you want to approve this account?')">
+                                <a class="green" href="accounts.php?approve=<?=$account['id']?>" onclick="return confirm('Biztosan jóváhagyod ezt a fiókot?')">
                                     <span class="icon">
                                         <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM625 177L497 305c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L591 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
                                     </span>    
-                                    Approve
+                                    Jóváhagyás
                                 </a>
                                 <?php endif; ?>
                                 <?php if ($account['activation_code'] != 'activated'): ?>
-                                <a class="green" href="accounts.php?activate=<?=$account['id']?>" onclick="return confirm('Are you sure you want to activate this account?')">
+                                <a class="green" href="accounts.php?activate=<?=$account['id']?>" onclick="return confirm('Biztosan aktiválod ezt a fiókot?')">
                                     <span class="icon">
                                         <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM625 177L497 305c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L591 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
                                     </span>    
-                                    Activate
+                                    Aktiválás
                                 </a>
                                 <?php endif; ?>
                                 <?php if ($account['activation_code'] != 'deactivated'): ?>
-                                <a class="red" href="accounts.php?deactivate=<?=$account['id']?>" onclick="return confirm('Are you sure you want to deactivate this account? They will no longer be able to log in.')">
+                                <a class="red" href="accounts.php?deactivate=<?=$account['id']?>" onclick="return confirm('Biztosan deaktiválod ezt a fiókot? A felhasználó nem fog tudni belépni.')">
                                     <span class="icon">
                                         <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L353.3 251.6C407.9 237 448 187.2 448 128C448 57.3 390.7 0 320 0C250.2 0 193.5 55.8 192 125.2L38.8 5.1zM264.3 304.3C170.5 309.4 96 387.2 96 482.3c0 16.4 13.3 29.7 29.7 29.7H514.3c3.9 0 7.6-.7 11-2.1l-261-205.6z"/></svg>
                                     </span>    
-                                    Deactivate
+                                    Deaktiválás
                                 </a>
                                 <?php endif; ?>
-                                <a class="red" href="accounts.php?delete=<?=$account['id']?>" onclick="return confirm('Are you sure you want to delete this account?')">
+                                <a class="red" href="accounts.php?delete=<?=$account['id']?>" onclick="return confirm('Biztosan törlöd ezt a fiókot?')">
                                     <span class="icon">
                                         <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
                                     </span>    
-                                    Delete
+                                    Törlés
                                 </a>
                             </div>
                         </div>
@@ -351,11 +373,11 @@ $url = 'accounts.php?search_query=' . $search . '&status=' . $status . '&role=' 
 
 <div class="pagination">
     <?php if ($page > 1): ?>
-    <a href="<?=$url?>&page=<?=$page-1?>&order=<?=$order?>&order_by=<?=$order_by?>">Prev</a>
+    <a href="<?=$url?>&page=<?=$page-1?>&order=<?=$order?>&order_by=<?=$order_by?>">Előző</a>
     <?php endif; ?>
-    <span>Page <?=$page?> of <?=ceil($total_accounts / $results_per_page) == 0 ? 1 : ceil($total_accounts / $results_per_page)?></span>
+    <span>Oldal <?=$page?> / <?=ceil($total_accounts / $results_per_page) == 0 ? 1 : ceil($total_accounts / $results_per_page)?></span>
     <?php if ($page * $results_per_page < $total_accounts): ?>
-    <a href="<?=$url?>&page=<?=$page+1?>&order=<?=$order?>&order_by=<?=$order_by?>">Next</a>
+    <a href="<?=$url?>&page=<?=$page+1?>&order=<?=$order?>&order_by=<?=$order_by?>">Következő</a>
     <?php endif; ?>
 </div>
 

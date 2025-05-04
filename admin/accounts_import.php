@@ -66,14 +66,14 @@ if (isset($_FILES['file']) && !empty($_FILES['file']['tmp_name'])) {
     }
 }
 ?>
-<?=template_admin_header('Import Accounts', 'accounts', 'import')?>
+<?=template_admin_header('Fiókok importálása', 'accounts', 'import')?>
 
 <form method="post" enctype="multipart/form-data">
 
     <div class="content-title responsive-flex-wrap responsive-pad-bot-3">
-        <h2>Import Accounts</h2>
+        <h2>Fiókok importálása</h2>
         <div class="btns">
-            <a href="accounts.php" class="btn alt mar-right-1">Cancel</a>
+            <a href="accounts.php" class="btn alt mar-right-1">Mégse</a>
             <input type="submit" name="submit" value="Export" class="btn">
         </div>
     </div>
@@ -82,7 +82,7 @@ if (isset($_FILES['file']) && !empty($_FILES['file']['tmp_name'])) {
 
         <div class="form responsive-width-100">
 
-            <label for="file"><i class="required">*</i> File</label>
+            <label for="file"><i class="required">*</i> Fájl</label>
             <input type="file" name="file" id="file" accept=".csv,.json,.xml,.txt" required>
 
         </div>
