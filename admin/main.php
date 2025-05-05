@@ -98,7 +98,7 @@ echo '<!DOCTYPE html>
             </h1>
             ' . $admin_links . '
             <div class="footer">
-                <a href="https://codeshack.io/package/php/advanced-secure-login-registration-system/" target="_blank">Advanced Login &amp; Registration</a>
+                <a href="https://szirony.hu" target="_blank">Advanced Login &amp; Registration</a>
                 Verzió 4.0.0
             </div>
         </aside>

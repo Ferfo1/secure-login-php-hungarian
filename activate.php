@@ -19,13 +19,13 @@ if (isset($_GET['code']) && !empty($_GET['code'])) {
 		$stmt->execute();
 		$stmt->close();
 		// Output success message
-		$success_msg = 'Your account is now activated! You can now <a href="index.php" class="form-link">Login</a>.';
+		$success_msg = 'A fiókod aktiválva lett! Most már <a href="index.php" class="form-link">bejelentkezhetsz</a>.';
 	} else {
 		// Account with the code specified does not exist
-		exit('The account is already activated or doesn\'t exist!');
+		exit('A fiók már aktiválva van, vagy nem létezik!');
 	}
 } else {
-	exit('No code was specified!');
+	exit('Nincs megadva aktiváló kód!');
 }
 ?>
 <!DOCTYPE html>
@@ -33,13 +33,13 @@ if (isset($_GET['code']) && !empty($_GET['code'])) {
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1">
-		<title>Activate Account</title>
+		<title>Fiók aktiválása</title>
 		<link href="style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div class="login">
 
-			<h1>Activate Account</h1>
+			<h1>Fiók aktiválása</h1>
 
 			<div class="form register-form">
 

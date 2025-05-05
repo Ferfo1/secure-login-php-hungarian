@@ -3,7 +3,7 @@ include 'main.php';
 // Now we check if the data from the login form was submitted, isset() will check if the data exists
 if (!isset($_POST['username'], $_POST['password'])) {
 	// Could not retrieve the captured data, output error
-	exit('Error: Please fill both the username and password fields!');
+	exit('Error: Kérjük, töltsd ki a felhasználónév és jelszó mezőket!');
 }
 // Prepare our SQL query and find the account associated with the login details
 // Preparing the SQL statement will prevent SQL injection
@@ -23,13 +23,13 @@ if ($stmt->num_rows > 0) {
 		// Check if the account is activated
 		if (account_activation && $activation_code != 'activated') {
 			// User has not activated their account, output the message
-			echo 'Error: Please activate your account to login! Click <a href="resend-activation.php" class="form-link">here</a> to resend the activation email.';
+			echo 'Error: Kérjük, aktiváld a fiókodat a bejelentkezéshez! Kattints <a href="resend-activation.php" class="form-link">ide</a> az aktiváló e-mail újraküldéséhez.';
 		} else if ($activation_code == 'deactivated') {
 			// The account is deactivated
-			echo 'Error: Your account has been deactivated!';
+			echo 'Error: A fiókod deaktiválva lett!';
 		} else if (account_approval && !$approved) {
 			// The account is not approved
-			echo 'Error: Your account has not been approved yet!';
+			echo 'Error: A fiókod még nincs jóváhagyva!';
 		} else {
 			// Verification success! User has loggedin!
 			// Regenerate session ID to invalidate the old one (helps to prevent session fixation attacks)
@@ -65,10 +65,10 @@ if ($stmt->num_rows > 0) {
 		}
 	} else {
 		// Incorrect password
-		echo 'Error: Incorrect username and/or password!';
+		echo 'Error: Hibás felhasználónév és/vagy jelszó!';
 	}
 } else {
 	// Incorrect username
-	echo 'Error: Incorrect username and/or password!';
+	echo 'Error: Hibás felhasználónév és/vagy jelszó!';
 }
 ?>

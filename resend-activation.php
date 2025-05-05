@@ -21,9 +21,9 @@ if (isset($_POST['email'])) {
         // Send activation email
         send_activation_email($_POST['email'], $activation_code);
         // Output success message
-        $success_msg = 'Activaton link has been sent to your email!';
+        $success_msg = 'Az aktivációs linket elküldtük az e-mail címedre!';
     } else {
-        $error_msg = 'An account with that email doesn\'t exist or is already activated!';
+        $error_msg = 'Nincs ilyen e-mail címmel fiók, vagy a fiók már aktiválva van!';
     }
 }
 ?>
@@ -32,20 +32,20 @@ if (isset($_POST['email'])) {
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1">
-		<title>Resend Activation Email</title>
+		<title>Aktivációs e-mail újraküldése</title>
 		<link href="style.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div class="login">
 
-			<h1>Resend Activation Email</h1>
+			<h1>Aktivációs e-mail újraküldése</h1>
 
 			<form action="resend-activation.php" method="post" class="form">
 
-				<label class="form-label" for="email">Email</label>
+				<label class="form-label" for="email">E-mail</label>
 				<div class="form-group mar-bot-5">
 					<svg class="form-icon-left" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
-					<input class="form-input" type="email" name="email" placeholder="Email" id="email" required>
+					<input class="form-input" type="email" name="email" placeholder="E-mail" id="email" required>
 				</div>
 				
 				<?php if ($error_msg): ?>
@@ -58,7 +58,7 @@ if (isset($_POST['email'])) {
 				</div>
 				<?php endif; ?>
 
-				<button class="btn blue" type="submit">Submit</button>
+				<button class="btn blue" type="submit">Küldés</button>
 
 			</form>
 
